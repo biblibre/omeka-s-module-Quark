@@ -1,0 +1,45 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Poedit 3.2.2\n"
+
+#: src/Form/ConfigForm.php:35
+msgid "Name Assigning Authority Number"
+msgstr "Numéro d’autorité d’assignement de nom"
+
+#: src/Form/ConfigForm.php:48
+msgid ""
+"See <a href=\"https://arks.org/about/shoulders/\">recommendations about "
+"shoulders</a>"
+msgstr ""
+"Voir <a href=\"https://arks.org/about/shoulders/\"> les recommandations sur "
+"les <em>shoulders</em></a>"
+
+#: src/Validator/ArkShoulder.php:16
+msgid "value is not a string"
+msgstr "la valeur n’est pas une chaîne de caractères"
+
+#: src/Validator/ArkShoulder.php:17
+msgid "value is empty"
+msgstr "la valeur est vide"
+
+#: src/Validator/ArkShoulder.php:18
+msgid "'%value%' contains non-betanumeric characters"
+msgstr "'%value%' contient des caractères non-betanumérique"
+
+#: src/Validator/ArkShoulder.php:19
+msgid "'%value%' does not end with a digit"
+msgstr "'%value%' ne se termine pas par un chiffre"
+
+#: src/Validator/ArkShoulder.php:20
+msgid "'%value%' does not start with a letter"
+msgstr "'%value%' ne commence pas par une lettre"

@@ -1,0 +1,36 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: src/Form/ConfigForm.php:35
+msgid "Name Assigning Authority Number"
+msgstr ""
+
+#: src/Form/ConfigForm.php:48
+msgid ""
+"See <a href=\"https://arks.org/about/shoulders/\">recommendations about "
+"shoulders</a>"
+msgstr ""
+
+#: src/Validator/ArkShoulder.php:16
+msgid "value is not a string"
+msgstr ""
+
+#: src/Validator/ArkShoulder.php:17
+msgid "value is empty"
+msgstr ""
+
+#: src/Validator/ArkShoulder.php:18
+msgid "'%value%' contains non-betanumeric characters"
+msgstr ""
+
+#: src/Validator/ArkShoulder.php:19
+msgid "'%value%' does not end with a digit"
+msgstr ""
+
+#: src/Validator/ArkShoulder.php:20
+msgid "'%value%' does not start with a letter"
+msgstr ""

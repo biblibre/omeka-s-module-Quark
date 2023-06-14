@@ -41,6 +41,7 @@ class Module extends AbstractModule
         $form = $formElementManager->get(ConfigForm::class);
         $form->setData([
             'naan' => $settings->get('quark_naan', '99999'),
+            'shoulder' => $settings->get('quark_shoulder', ''),
         ]);
 
         return $renderer->formCollection($form, false);
@@ -60,6 +61,7 @@ class Module extends AbstractModule
 
         $formData = $form->getData();
         $settings->set('quark_naan', $formData['naan']);
+        $settings->set('quark_shoulder', $formData['shoulder']);
 
         return true;
     }
