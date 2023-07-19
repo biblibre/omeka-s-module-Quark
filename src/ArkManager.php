@@ -86,7 +86,8 @@ class ArkManager
     public function createArkName(): string
     {
         $uuid = $this->uuid();
-        $arkName = sodium_bin2base64($uuid, SODIUM_BASE64_VARIANT_URLSAFE_NO_PADDING);
+        $shoulder = $this->settings->get('quark_shoulder', '');
+        $arkName = $shoulder . sodium_bin2base64($uuid, SODIUM_BASE64_VARIANT_URLSAFE_NO_PADDING);
 
         return $arkName;
     }
@@ -106,7 +107,6 @@ class ArkManager
 
         return $this->dctermsIdentifierProperty;
     }
-
 
     protected function uuid()
     {

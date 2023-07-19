@@ -20,13 +20,15 @@
 namespace Quark\Form;
 
 use Laminas\Form\Form;
+use Laminas\Form\Element\Text;
+use Quark\Validator;
 
 class ConfigForm extends Form
 {
     public function init()
     {
         $this->add([
-            'type' => 'Text',
+            'type' => Text::class,
             'name' => 'naan',
             'options' => [
                 'label' => 'NAAN',
@@ -35,6 +37,29 @@ class ConfigForm extends Form
             'attributes' => [
                 'id' => 'naan',
                 'required' => true,
+            ],
+        ]);
+
+        $this->add([
+            'type' => Text::class,
+            'name' => 'shoulder',
+            'options' => [
+                'label' => 'Shoulder',
+                'info' => 'See <a href="https://arks.org/about/shoulders/">recommendations about shoulders</a>', // @translate
+                'escape_info' => false,
+            ],
+            'attributes' => [
+                'id' => 'shoulder',
+                'required' => false,
+            ],
+        ]);
+
+        $inputFilter = $this->getInputFilter();
+        $inputFilter->add([
+            'name' => 'shoulder',
+            'allow_empty' => true,
+            'validators' => [
+                [ 'name' => Validator\ArkShoulder::class ],
             ],
         ]);
     }

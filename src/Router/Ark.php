@@ -21,7 +21,7 @@ class Ark extends Segment implements RouteInterface
      *
      * @see    \Laminas\Router\RouteInterface::match()
      * @param  Request      $request
-     * @param  integer|null $pathOffset
+     * @param  int|null $pathOffset
      * @return RouteMatch|null
      */
     public function match(Request $request, $pathOffset = null, array $options = [])
@@ -37,7 +37,7 @@ class Ark extends Segment implements RouteInterface
 
         $ark = sprintf('ark:/%s/%s', $naan, $name);
         if ($qualifier) {
-            list($subname, $variant) = array_pad(explode('.', $qualifier, 2), 2, null);
+            [$subname, $variant] = array_pad(explode('.', $qualifier, 2), 2, null);
             $ark .= '/' . $subname;
         }
         $resource = $this->getArkManager()->getResourceFromArk($ark);

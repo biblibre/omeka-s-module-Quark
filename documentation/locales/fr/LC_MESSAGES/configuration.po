@@ -1,0 +1,61 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2023, BibLibre
+# This file is distributed under the same license as the Quark package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2023.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Quark\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-07-19 13:22+0200\n"
+"PO-Revision-Date: 2023-07-19 13:35+0200\n"
+"Last-Translator: \n"
+"Language-Team: fr <LL@li.org>\n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"Generated-By: Babel 2.12.1\n"
+"X-Generator: Poedit 3.2.2\n"
+
+#: ../../configuration.rst:2
+msgid "Configuration"
+msgstr "Configuration"
+
+#: ../../configuration.rst:4
+msgid ""
+"The following settings are available in the module configuration page "
+"that is displayed right after enabling it"
+msgstr ""
+"Les paramètres suivants sont disponibles sur la page de configuration "
+"du module qui est affichée juste après l'avoir activé"
+
+#: ../../configuration.rst:8
+msgid "NAAN"
+msgstr "NAAN"
+
+#: ../../configuration.rst:10
+msgid ""
+"The Name Assigning Authority Number of your organization. If you don't "
+"have one yet, read `Getting started: what to plan for as you implement "
+"ARKs <https://arks.org/about/getting-started-implementing-arks/>`_."
+msgstr ""
+"Le numéro d'autorité d'assignement de nom de votre organisation. Si "
+"vous n'en avez pas encore, lisez `Getting started: what to plan for as "
+"you implement ARKs <https://arks.org/about/getting-started-"
+"implementing-arks/>`_."
+
+#: ../../configuration.rst:15
+msgid "Shoulder"
+msgstr "Shoulder"
+
+#: ../../configuration.rst:17
+msgid ""
+"The shoulder that will be used for all generated ARK identifiers. See "
+"`ARK namespaces and sub-namespaces <https://arks.org/about/ark-"
+"namespaces/>`_ for more informations about shoulders."
+msgstr ""
+"Le *shoulder* qui sera utilisé pour tous les identifiants ARK générés. "
+"Voir `ARK namespaces and sub-namespaces <https://arks.org/about/ark-"
+"namespaces/>`_ pour plus d'informations à propos des *shoulders*."
