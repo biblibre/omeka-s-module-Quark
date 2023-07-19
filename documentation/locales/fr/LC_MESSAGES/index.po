@@ -1,0 +1,93 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2023, BibLibre
+# This file is distributed under the same license as the Quark package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2023.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Quark\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-07-19 13:37+0200\n"
+"PO-Revision-Date: 2023-07-19 13:37+0200\n"
+"Last-Translator: \n"
+"Language-Team: fr <LL@li.org>\n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"Generated-By: Babel 2.12.1\n"
+"X-Generator: Poedit 3.2.2\n"
+
+#: ../../index.rst:2
+msgid "Quark"
+msgstr "Quark"
+
+#: ../../index.rst:4
+msgid ""
+"`Quark`_ is a module for Omeka S that generates ARK identifiers for "
+"Omeka S resources, like `Ark`_."
+msgstr ""
+"`Quark`_ est un module pour Omeka S qui génère des identifiants ARK pour "
+"les ressources Omeka S, comme `Ark`_."
+
+#: ../../index.rst:8
+msgid "Comparison with the Ark module"
+msgstr "Comparaison avec le module Ark"
+
+#: ../../index.rst:10
+msgid "Unlike `Ark`_, Quark:"
+msgstr "Contrairement à `Ark`_, Quark:"
+
+#: ../../index.rst:12
+msgid "does not need an external library,"
+msgstr "n'a pas besoin d'une librairie externe,"
+
+#: ../../index.rst:13
+msgid "does not need ``dba`` PHP extension,"
+msgstr "n'a pas besoin de l'extension PHP ``dba``,"
+
+#: ../../index.rst:14
+msgid "does not need a separate database file,"
+msgstr "n'a pas besoin d'un fichier de base de données séparé,"
+
+#: ../../index.rst:15
+msgid ""
+"uses `UUID <https://fr.wikipedia.org/wiki/"
+"Universally_unique_identifier>`_ to generate unique identifiers"
+msgstr ""
+"utilise `UUID <https://fr.wikipedia.org/wiki/"
+"Universally_unique_identifier>`_ pour générer des identifiants uniques"
+
+#: ../../index.rst:17
+msgid "has less configuration options"
+msgstr "a moins d'options de configuration"
+
+#: ../../index.rst:18
+msgid ""
+"does not implement \"inflections\" (URLs that end with one or two "
+"question marks) yet"
+msgstr ""
+"n'implémente pas les \"inflections\" (les URLs qui se terminent par un "
+"ou deux points d'interrogation) pour le moment"
+
+#: ../../index.rst:21
+msgid ""
+"Because it uses UUID, Quark should generate ARK identifiers faster that "
+"`Ark`_, especially as the number of resources grow."
+msgstr ""
+"Parce qu'il utilise UUID, Quark devrait générer des identifiants ARK "
+"plus rapidement que `Ark`_, en particulier lorsque le nombre de "
+"ressources augmente."
+
+#: ../../index.rst:25
+msgid "Installation"
+msgstr "Installation"
+
+#: ../../index.rst:27
+msgid ""
+"See general end user documentation for `Installing a module <http://"
+"omeka.org/s/docs/user-manual/modules/#installing-modules>`_."
+msgstr ""
+"Voir la documentation utilisateur générale pour `Installer un module "
+"<http://omeka.org/s/docs/user-manual/modules/#installing-modules>`_."

@@ -1,0 +1,3 @@
+documentation/_build
+documentation/locales/*/LC_MESSAGES/*.mo
+.phpunit.result.cache
