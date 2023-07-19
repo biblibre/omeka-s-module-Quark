@@ -5,9 +5,7 @@ namespace Quark;
 use Laminas\EventManager\Event;
 use Laminas\EventManager\SharedEventManagerInterface;
 use Laminas\Mvc\Controller\AbstractController;
-use Laminas\ModuleManager\ModuleManager;
 use Laminas\Mvc\MvcEvent;
-use Laminas\ServiceManager\ServiceLocatorInterface;
 use Laminas\View\Renderer\PhpRenderer;
 use Omeka\Module\AbstractModule;
 use Omeka\Api\Adapter\ItemAdapter;
@@ -71,10 +69,10 @@ class Module extends AbstractModule
         $onResourceSave = [$this, 'onResourceSave'];
         $sharedEventManager->attach(ItemSetAdapter::class, 'api.create.post', $onResourceSave);
         $sharedEventManager->attach(ItemSetAdapter::class, 'api.update.post', $onResourceSave);
-        $sharedEventManager->attach(ItemAdapter::class,    'api.create.post', $onResourceSave);
-        $sharedEventManager->attach(ItemAdapter::class,    'api.update.post', $onResourceSave);
-        $sharedEventManager->attach(MediaAdapter::class,   'api.create.post', $onResourceSave);
-        $sharedEventManager->attach(MediaAdapter::class,   'api.update.post', $onResourceSave);
+        $sharedEventManager->attach(ItemAdapter::class, 'api.create.post', $onResourceSave);
+        $sharedEventManager->attach(ItemAdapter::class, 'api.update.post', $onResourceSave);
+        $sharedEventManager->attach(MediaAdapter::class, 'api.create.post', $onResourceSave);
+        $sharedEventManager->attach(MediaAdapter::class, 'api.update.post', $onResourceSave);
     }
 
     public function onResourceSave(Event $event)

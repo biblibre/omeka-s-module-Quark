@@ -108,7 +108,6 @@ class ArkManager
         return $this->dctermsIdentifierProperty;
     }
 
-
     protected function uuid()
     {
         $data = random_bytes(16);
