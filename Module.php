@@ -13,6 +13,7 @@ use Omeka\Api\Adapter\ItemSetAdapter;
 use Omeka\Api\Adapter\MediaAdapter;
 use Omeka\Entity\Item;
 use Omeka\Entity\Media;
+use Omeka\Entity\Property;
 use Omeka\Entity\Resource;
 use Omeka\Entity\Value;
 use Quark\Form\ConfigForm;
@@ -87,6 +88,7 @@ class Module extends AbstractModule
         $services = $this->getServiceLocator();
         $settings = $services->get('Omeka\Settings');
         $arkManager = $services->get('Quark\ArkManager');
+        $em = $services->get('Omeka\EntityManager');
 
         $values = $resource->getValues();
         $arkValues = $arkManager->getArkValues($resource);
@@ -111,9 +113,16 @@ class Module extends AbstractModule
             }
 
             if ($ark) {
+                // We use a reference here to avoid exceptions when the
+                // Property object returned by getDctermsIdentifierProperty is
+                // detached from the EntityManager, which can happen during a
+                // BatchUpdate job for instance
+                $dctermsIdentifierPropertyId = $arkManager->getDctermsIdentifierProperty()->getId();
+                $dctermsIdentifierPropertyRef = $em->getReference(Property::class, $dctermsIdentifierPropertyId);
+
                 $value = new Value();
                 $value->setResource($resource);
-                $value->setProperty($arkManager->getDctermsIdentifierProperty());
+                $value->setProperty($dctermsIdentifierPropertyRef);
                 $value->setType('literal');
                 $value->setValue($ark);
                 $values->add($value);
