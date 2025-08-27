@@ -87,7 +87,8 @@ class ArkManager
     {
         $uuid = $this->uuid();
         $shoulder = $this->settings->get('quark_shoulder', '');
-        $arkName = $shoulder . sodium_bin2base64($uuid, SODIUM_BASE64_VARIANT_URLSAFE_NO_PADDING);
+        $uuid_base64 = sodium_bin2base64($uuid, SODIUM_BASE64_VARIANT_URLSAFE_NO_PADDING);
+        $arkName = $shoulder . str_replace('-', '~', $uuid_base64);
 
         return $arkName;
     }
