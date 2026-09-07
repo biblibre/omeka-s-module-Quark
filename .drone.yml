@@ -17,6 +17,9 @@ steps:
   - ../../node_modules/.bin/gulp test:module:cs
   image: git.biblibre.com/omeka-s/omeka-s-ci:4.0.4-php8.2
   name: test
+trigger:
+  event:
+  - push
 type: docker
 workspace:
   path: omeka-s/modules/Quark
@@ -39,6 +42,9 @@ steps:
   - ../../node_modules/.bin/gulp test:module:cs
   image: git.biblibre.com/omeka-s/omeka-s-ci:4.1.1-php8.2
   name: test
+trigger:
+  event:
+  - push
 type: docker
 workspace:
   path: omeka-s/modules/Quark
@@ -61,6 +67,9 @@ steps:
   - ../../node_modules/.bin/gulp test:module:cs
   image: git.biblibre.com/omeka-s/omeka-s-ci:4.2.1-php8.2
   name: test
+trigger:
+  event:
+  - push
 type: docker
 workspace:
   path: omeka-s/modules/Quark
@@ -83,6 +92,9 @@ steps:
   - ../../node_modules/.bin/gulp test:module:cs
   image: git.biblibre.com/omeka-s/omeka-s-ci:4.2.1-php8.3
   name: test
+trigger:
+  event:
+  - push
 type: docker
 workspace:
   path: omeka-s/modules/Quark
@@ -105,6 +117,9 @@ steps:
   - ../../node_modules/.bin/gulp test:module:cs
   image: git.biblibre.com/omeka-s/omeka-s-ci:4.2.1-php8.4
   name: test
+trigger:
+  event:
+  - push
 type: docker
 workspace:
   path: omeka-s/modules/Quark
@@ -127,6 +142,9 @@ steps:
   - ../../node_modules/.bin/gulp test:module:cs
   image: git.biblibre.com/omeka-s/omeka-s-ci:4.2.1-php8.5
   name: test
+trigger:
+  event:
+  - push
 type: docker
 workspace:
   path: omeka-s/modules/Quark
@@ -151,9 +169,10 @@ trigger:
   - master
   event:
   - push
+  - cron
 type: docker
 ---
 kind: signature
-hmac: e3a9eec020b3ba26ea9c1edc2c329b510798594e041e6e4e08dabe7953386385
+hmac: 14604685a7ac9cfbb14086ba8b5b80c5217e047ac0f5cb63ac21d06be23245be
 
 ...

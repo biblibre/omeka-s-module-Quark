@@ -28,6 +28,9 @@ local Pipeline(omekaVersion, phpVersion, dbImage) = {
             },
         },
     ],
+    trigger: {
+        event: ['push'],
+    },
 };
 
 local DocumentationPipeline() = {
@@ -58,7 +61,7 @@ local DocumentationPipeline() = {
     ],
     trigger: {
         branch: ['master'],
-        event: ['push'],
+        event: ['push', 'cron'],
     },
 };
 
