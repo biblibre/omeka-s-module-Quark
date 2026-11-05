@@ -12,7 +12,7 @@ name: security
 
 on:
   push:
-    branches: [master, main]
+    branches: [master, main, test-gitea-actions]
   pull_request:
   schedule:
     - cron: '@weekly'
