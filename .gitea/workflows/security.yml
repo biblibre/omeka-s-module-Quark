@@ -1,0 +1,93 @@
+name: security
+
+# À déposer dans .gitea/workflows/security.yml du dépôt du MODULE.
+#
+# Le module ne contient que ce fichier : ni config, ni règles, ni script.
+# Tout vit dans omeka-s-audit, que le job clone. Mettre à jour les règles pour
+# tous les modules se fait donc en poussant sur omeka-s-audit.
+#
+# Gitea Actions fait le checkout à la racine du workspace, où lib/audit.sh doit
+# reconstituer omeka-s/modules/<Module>. D'où le checkout à l'écart dans
+# _module, puis SRC qui indique au script où trouver le module à mettre en place.
+
+on:
+  push:
+    branches: [master, main]
+  pull_request:
+  schedule:
+    - cron: '@weekly'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+env:
+  AUDIT_REPO: "https://git.biblibre.com/omeka-s/omeka-s-audit.git"
+  # security (defaut) : echoue sur advisories composer, taint analysis et
+  #                     resultats opengrep de niveau error
+  # any               : ajoute les warnings opengrep
+  # never             : n'echoue jamais, pour un deploiement progressif
+  FAIL_ON: "security"
+
+jobs:
+  audit:
+    name: audit (omeka ${{ matrix.omeka }} / php ${{ matrix.php }})
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - { omeka: "4.2.1", php: "8.4" }
+          # Borne basse : decommenter pour verifier le plus ancien runtime.
+          # - { omeka: "4.1.1", php: "8.1" }
+    container:
+      image: git.biblibre.com/omeka-s/omeka-s-ci:${{ matrix.omeka }}-php${{ matrix.php }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: _module
+
+      # AUDIT_TOKEN n'est necessaire QUE si le depot d'outils est prive.
+      # S'il est public, ne definissez pas ce secret : l'etape clone en anonyme.
+      # Le jeton passe par .netrc et jamais par l'URL, ou il apparaitrait en
+      # clair dans les logs du job.
+      - name: Audit
+        env:
+          AUDIT_TOKEN: ${{ secrets.AUDIT_TOKEN }}
+        run: |
+          set -euo pipefail
+          if [ -n "${AUDIT_TOKEN:-}" ]; then
+            host="$(printf '%s' "$AUDIT_REPO" | awk -F/ '{print $3}')"
+            printf 'machine %s\nlogin oauth2\npassword %s\n' "$host" "$AUDIT_TOKEN" \
+              > "$HOME/.netrc"
+            chmod 600 "$HOME/.netrc"
+          fi
+          if ! git clone --depth 1 "$AUDIT_REPO" /tmp/omeka-s-audit 2>/tmp/clone.err; then
+            cat /tmp/clone.err >&2
+            echo >&2
+            echo "Le clone de $AUDIT_REPO a echoue." >&2
+            echo "  'could not read Username' = le depot exige une authentification :" >&2
+            echo "  soit il est prive, soit il n'existe pas." >&2
+            echo "  Corriger en le rendant public, ou en definissant le secret" >&2
+            echo "  AUDIT_TOKEN (jeton d'acces avec le scope lecture depot)." >&2
+            rm -f "$HOME/.netrc"
+            exit 1
+          fi
+          rm -f "$HOME/.netrc"
+          MODULE="${GITHUB_REPOSITORY##*/}"
+          MODULE="${MODULE#omeka-s-module-}"
+          export MODULE
+          export HARNESS=/tmp/omeka-s-audit
+          export ROOT="$PWD/omeka-s"
+          export SRC="$PWD/_module"
+          export OUT="$PWD/reports"
+          export PHPV="${{ matrix.php }}"
+          export FAIL_ON
+          bash /tmp/omeka-s-audit/lib/audit.sh
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: audit-${{ matrix.omeka }}-php${{ matrix.php }}
+          path: reports/
+          retention-days: 90
