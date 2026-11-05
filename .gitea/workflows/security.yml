@@ -27,7 +27,7 @@ env:
   #                     resultats opengrep de niveau error
   # any               : ajoute les warnings opengrep
   # never             : n'echoue jamais, pour un deploiement progressif
-  FAIL_ON: "security"
+  FAIL_ON: "any"
 
 jobs:
   audit:
